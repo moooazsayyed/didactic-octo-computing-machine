@@ -8,3 +8,13 @@ services:
         value: "-Xms256m -Xmx512m -Djenkins.install.runSetupWizard=false"
       - key: CASC_JENKINS_CONFIG
         value: /var/jenkins_home/jenkins.yml
+
+      # --- OIDC / GitHub envs ---
+      - key: OIDC_CLIENT_ID
+        value: "Ov23liWFVrZw1KTsxi72"
+      - key: OIDC_CLIENT_SECRET
+        value: "24adead9714f2e615c53bb0521d6d10df6b8f42d"
+      - key: OIDC_ISSUER
+        value: "https://github.com"
+      - key: JENKINS_URL
+        value: "https://np-jenkins.mooazsayyed.live"
