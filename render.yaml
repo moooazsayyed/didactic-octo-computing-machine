@@ -3,12 +3,14 @@ services:
     name: np-jenkins
     env: docker
     plan: free
+    buildCommand: docker build -t jenkins-with-oidc .
+    startCommand: /usr/bin/tini -- /usr/local/bin/jenkins.sh
     envVars:
       - key: JAVA_OPTS
         value: "-Xms256m -Xmx512m -Djenkins.install.runSetupWizard=false"
       - key: CASC_JENKINS_CONFIG
         value: /var/jenkins_home/jenkins.yml
-
+        
       # --- OIDC / GitHub envs ---
       - key: OIDC_CLIENT_ID
         value: "Ov23liWFVrZw1KTsxi72"
