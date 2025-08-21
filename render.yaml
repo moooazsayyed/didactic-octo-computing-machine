@@ -3,20 +3,15 @@ services:
     name: np-jenkins
     env: docker
     plan: free
-    buildCommand: docker build -t jenkins-with-oidc .
-    startCommand: /usr/bin/tini -- /usr/local/bin/jenkins.sh
+    dockerfilePath: ./Dockerfile
     envVars:
       - key: JAVA_OPTS
         value: "-Xms256m -Xmx512m -Djenkins.install.runSetupWizard=false"
       - key: CASC_JENKINS_CONFIG
         value: /var/jenkins_home/jenkins.yml
-        
-      # --- OIDC / GitHub envs ---
-      - key: OIDC_CLIENT_ID
-        value: "Ov23liWFVrZw1KTsxi72"
-      - key: OIDC_CLIENT_SECRET
-        value: "24adead9714f2e615c53bb0521d6d10df6b8f42d"
-      - key: OIDC_ISSUER
-        value: "https://github.com"
-      - key: JENKINS_URL
-        value: "https://np-jenkins.mooazsayyed.live"
+      - key: GITHUB_CLIENT_ID
+        sync: false
+      - key: GITHUB_CLIENT_SECRET
+        sync: false
+      - key: GITHUB_ORG
+        value: "sayyed-group"
