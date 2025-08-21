@@ -1,21 +1,22 @@
 jenkins:
-  systemMessage: "Provisioned by JCasC with GitHub OAuth"
-  securityRealm:
-    github:
-      clientID: "${OIDC_CLIENT_ID}"
-      clientSecret: "${OIDC_CLIENT_SECRET}"
-      githubWebUri: "https://github.com"
-      githubApiUri: "https://api.github.com"
-      oauthScopes: "read:user,user:email"
-      allowSignup: false
-  authorizationStrategy:
-    github:
-      adminUserNames:
-        - "moooazsayyed" # GitHub username(s) with admin rights
-        - "mooazsayyed"
-      authenticatedUserReadPermission: true
-      allowAnonymousReadPermission: false
+  systemMessage: "Jenkins on Render with GitHub OAuth 🚀"
 
 unclassified:
   location:
-    url: "${JENKINS_URL}"
+    url: "https://np-jenkins.onrender.com"
+
+securityRealm:
+  github:
+    clientID: "${GITHUB_CLIENT_ID}"
+    clientSecret: "${GITHUB_CLIENT_SECRET}"
+    oauthScopes: "read:org,user:email"
+    allowSignup: true
+    organizations:
+      - "${GITHUB_ORG}"   # only members of this org/user can log in
+    adminUserNames:
+      - "mooazsayyed"
+      - "moooazsayyed" # give yourself admin rights
+
+authorizationStrategy:
+  loggedInUsersCanDoAnything:
+    allowAnonymousRead: false
