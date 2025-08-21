@@ -1,21 +1,15 @@
 jenkins:
-  systemMessage: "Stateless Jenkins with GitHub login"
-  numExecutors: 0
-
-unclassified:
-  githubSecurityRealm:
-    clientID: ${GITHUB_CLIENT_ID}
-    clientSecret: ${GITHUB_CLIENT_SECRET}
-    oauthScopes: "read:org,user:email"
-    allowSignup: false
-    organizations: ["sayyed-group"]
-
-security:
-  realm: github
+  systemMessage: "Provisioned by JCasC - GitHub OIDC enabled"
+  securityRealm:
+    github:
+      clientID: "${OIDC_CLIENT_ID}"
+      clientSecret: "${OIDC_CLIENT_SECRET}"
+      githubWebUri: "https://github.com"
+      githubApiUri: "https://api.github.com"
+      oauthScopes: "read:user,user:email"
   authorizationStrategy:
-    roleBased:
-      roles:
-        global:
-          - name: admins
-            permissions: ["Overall/Administer"]
-            assignments: ["moooazsayyed"]
+    loggedInUsersCanDoAnything:
+      allowAnonymousRead: false
+unclassified:
+  location:
+    url: "${JENKINS_URL}"
