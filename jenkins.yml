@@ -1,0 +1,21 @@
+jenkins:
+  systemMessage: "Stateless Jenkins with GitHub login"
+  numExecutors: 0
+
+unclassified:
+  githubSecurityRealm:
+    clientID: ${GITHUB_CLIENT_ID}
+    clientSecret: ${GITHUB_CLIENT_SECRET}
+    oauthScopes: "read:org,user:email"
+    allowSignup: false
+    organizations: ["sayyed-group"]
+
+security:
+  realm: github
+  authorizationStrategy:
+    roleBased:
+      roles:
+        global:
+          - name: admins
+            permissions: ["Overall/Administer"]
+            assignments: ["moooazsayyed"]
