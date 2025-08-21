@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: np-jenkins
+    env: docker
+    plan: free
+    dockerImage: jenkins/jenkins:lts-jdk17
+    envVars:
+      - key: JAVA_OPTS
+        value: "-Xms256m -Xmx512m -Djenkins.install.runSetupWizard=false"
