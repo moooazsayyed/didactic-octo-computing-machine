@@ -3,7 +3,7 @@ services:
     name: np-jenkins
     env: docker
     plan: free
-    dockerImage: mooaz/jenkins-oidc:latest
+    dockerImage: mooaz/jenkins-oidc.v1.2
     envVars:
       - key: JAVA_OPTS
         value: "-Xms256m -Xmx512m -Djenkins.install.runSetupWizard=false"
