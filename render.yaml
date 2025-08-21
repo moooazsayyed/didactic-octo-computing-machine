@@ -3,15 +3,12 @@ services:
     name: np-jenkins
     env: docker
     plan: free
-    dockerfilePath: ./Dockerfile
     envVars:
       - key: JAVA_OPTS
         value: "-Xms256m -Xmx512m -Djenkins.install.runSetupWizard=false"
       - key: CASC_JENKINS_CONFIG
-        value: /var/jenkins_home/jenkins.yml
+        value: /var/jenkins_home/jenkins.yaml
       - key: GITHUB_CLIENT_ID
         sync: false
       - key: GITHUB_CLIENT_SECRET
         sync: false
-      - key: GITHUB_ORG
-        value: "sayyed-group"
