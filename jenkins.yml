@@ -1,5 +1,5 @@
 jenkins:
-  systemMessage: "Provisioned by JCasC - GitHub OIDC enabled"
+  systemMessage: "Provisioned by JCasC with GitHub OAuth"
   securityRealm:
     github:
       clientID: "${OIDC_CLIENT_ID}"
@@ -7,9 +7,15 @@ jenkins:
       githubWebUri: "https://github.com"
       githubApiUri: "https://api.github.com"
       oauthScopes: "read:user,user:email"
+      allowSignup: false
   authorizationStrategy:
-    loggedInUsersCanDoAnything:
-      allowAnonymousRead: false
+    github:
+      adminUserNames:
+        - "moooazsayyed" # GitHub username(s) with admin rights
+        - "mooazsayyed"
+      authenticatedUserReadPermission: true
+      allowAnonymousReadPermission: false
+
 unclassified:
   location:
     url: "${JENKINS_URL}"
