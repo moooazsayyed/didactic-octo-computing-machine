@@ -1,22 +1,19 @@
 jenkins:
-  systemMessage: "Jenkins on Render with GitHub OAuth 🚀"
+  systemMessage: "Jenkins configured as code with GitHub OIDC login 🎉"
+
+  securityRealm:
+    github:
+      githubWebUri: "https://github.com"
+      githubApiUri: "https://api.github.com"
+      clientID: "${GITHUB_CLIENT_ID}"
+      clientSecret: "${GITHUB_CLIENT_SECRET}"
+      oauthScopes: "read:org,user:email"
+
+  authorizationStrategy:
+    loggedInUsersCanDoAnything:
+      allowAnonymousRead: false
 
 unclassified:
   location:
-    url: "https://np-jenkins.onrender.com"
+    url: "https://np-jenkins.mooazsayyed.live/"
 
-securityRealm:
-  github:
-    clientID: "${GITHUB_CLIENT_ID}"
-    clientSecret: "${GITHUB_CLIENT_SECRET}"
-    oauthScopes: "read:org,user:email"
-    allowSignup: true
-    organizations:
-      - "${GITHUB_ORG}"   # only members of this org/user can log in
-    adminUserNames:
-      - "mooazsayyed"
-      - "moooazsayyed" # give yourself admin rights
-
-authorizationStrategy:
-  loggedInUsersCanDoAnything:
-    allowAnonymousRead: false
